@@ -1,0 +1,6 @@
+/.cargo
+/.idea
+/.replit
+/target
+Cargo.lock
+.replit
