@@ -1,5 +1,7 @@
 use std::collections::HashMap;
 use serde::{Deserialize, Serialize};
+use crate::global_pkglist::GlobalPkgList;
+use crate::local_pkglist::LocalPkgList;
 use crate::platform::PlatformSpecificInfo;
 
 #[derive(Debug, Serialize, Deserialize, Clone)]

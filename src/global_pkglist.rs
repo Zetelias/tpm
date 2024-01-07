@@ -30,6 +30,10 @@ impl GlobalPkgList {
         self.packages.remove(name);
     }
 
+    pub fn contains(&self, name: &str) -> bool {
+        self.packages.contains_key(name)
+    }
+
     pub fn get(&self, name: &str) -> Option<&Package> {
         self.packages.get(name)
     }

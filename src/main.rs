@@ -56,4 +56,6 @@ fn load_pkgslists() -> (GlobalPkgList, LocalPkgList) {
 async fn main() {
     // Load the package lists
     let (mut global_pkglist, mut local_pkglist) = load_pkgslists();
+    dbg!(&global_pkglist);
+    dbg!(&local_pkglist);
 }
