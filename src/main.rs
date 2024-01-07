@@ -19,23 +19,4 @@ use crate::platform::PlatformSpecificInfo;
 #[tokio::main]
 async fn main() {
     genpkglist::gen_empty_pkglist();
-    // Load the local package list, or create a new one if it doesn't exist.
-    let mut local_pkglist = match LocalPkgList::load() {
-        Some(pkglist) => pkglist,
-        None => {
-            let pkglist = LocalPkgList::new_empty();
-            pkglist.save().unwrap();
-            pkglist
-        }
-    };
-
-    // Load the global package list, or load from url if it doesn't exist.
-    let mut global_pkglist = match GlobalPkgList::load_local() {
-        Some(pkglist) => pkglist,
-        None => {
-            let pkglist = GlobalPkgList::load_from_url(consts::GLOBAL_PKG_LIST_URL).unwrap();
-            pkglist.save_local().unwrap();
-            pkglist
-        }
-    };
 }
