@@ -15,7 +15,7 @@ pub async fn download_and_extract(
     if response.status().is_success() {
         let file = File::create(path)?;
         let mut writer = std::io::BufWriter::new(file);
-        let total_bytes = response.content_length().unwrap_or(0);
+        let total_bytes = response.content_length().unwrap_or(1);
         let mut stream = response.bytes_stream();
 
         let mut bytes_downloaded = 0;
