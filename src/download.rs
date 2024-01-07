@@ -32,20 +32,22 @@ pub async fn download_and_extract(
         }
 
         writer.flush()?;
-        println!("\nFile downloaded successfully!");
+        println!("\n[{path}] File downloaded successfully!");
 
         let file = File::open(path)?;
         let decoder = GzDecoder::new(file);
         let mut archive = Archive::new(decoder);
 
         archive.unpack(unzip_pack)?;
-        println!("File extracted and renamed successfully!");
+        println!("[{path}] File extracted and renamed successfully!");
     } else {
-        println!("Failed to fetch the file: {}", response.status());
+        println!("[{path}] Failed to fetch the file: {}", response.status());
     }
 
     // Delete the downloaded file
     std::fs::remove_file(path)?;
+
+    println!("[{path}] Cached tarball deleted successfully!");
 
     Ok(())
 }
